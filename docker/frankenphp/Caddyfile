@@ -1,0 +1,21 @@
+{
+    # Debug mode for development
+    debug
+    frankenphp
+}
+
+localhost {
+    root * /app/public
+    encode gzip
+    php_server {
+        resolve_root_symlink
+    }
+
+    # Static files
+    file_server
+
+    # Handle PHP files
+    route {
+        try_files {path} {path}/ /index.php?{query}
+    }
+}
